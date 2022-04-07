@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="fb4cb0e3e5ac49ed85b416020b876463" Name="Diagram1">
+        <EntityTypeShape EntityType="SQL_BeautyHomeModel.comment_product" Width="1.5" PointX="7.5" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="SQL_BeautyHomeModel.furniture" Width="1.5" PointX="0.75" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SQL_BeautyHomeModel.image_product" Width="1.5" PointX="7.5" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SQL_BeautyHomeModel.order" Width="1.5" PointX="3" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="SQL_BeautyHomeModel.product" Width="1.5" PointX="5.25" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SQL_BeautyHomeModel.sysdiagram" Width="1.5" PointX="5.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SQL_BeautyHomeModel.type_product" Width="1.5" PointX="3" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SQL_BeautyHomeModel.user" Width="1.5" PointX="0.75" PointY="7.5" IsExpanded="true" />
+        <AssociationConnector Association="SQL_BeautyHomeModel.FK__comment_p__produ__300424B4" ManuallyRouted="false" />
+        <AssociationConnector Association="SQL_BeautyHomeModel.FK__type_prod__furni__33D4B598" ManuallyRouted="false" />
+        <AssociationConnector Association="SQL_BeautyHomeModel.FK__image_pro__produ__30F848ED" ManuallyRouted="false" />
+        <AssociationConnector Association="SQL_BeautyHomeModel.FK__order__user_id__31EC6D26" ManuallyRouted="false" />
+        <AssociationConnector Association="SQL_BeautyHomeModel.FK__product__type_pr__32E0915F" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,150 @@
+﻿@model BeautyHome.Models.AdminProductView
+
+@using BeautyHome.Context;
+@using BeautyHome.Models;
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Admin_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <p class="text-white mt-5 mb-5">Welcome back, <b>Admin</b></p>
+        </div>
+    </div>
+    <!-- row -->
+
+    <div class="row tm-content-row">
+
+
+        <div class="col-12 tm-block-col" style="margin-bottom: 78px;">
+            <form action="/Admin_Home/Index">
+
+                <input type="month" name="date" class="form-control validate" />
+                <button type="submit" class="btn btn-primary text-uppercase mb-3">Thống kê</button>
+            </form>
+
+            <div class="row" style=" height: 160px; margin-top: 42px;">
+                <div class="col">
+                    <i class="tk fas fa-file-invoice-dollar"></i>
+                    <div class="tksl"> ĐƠN HÀNG</div>
+                    <div class="so">@Model.statistical.totalOrder</div>
+                </div>
+                <div class="col">
+                    <i class="tk fas fa-users"></i>
+                    <div class="tksl" style="margin-left:90px"> NGƯỜI DÙNG</div>
+                    <div class="so">@Model.statistical.totalUser</div>
+                </div>
+                <div class="col">
+                    <i class="tk fas fa-list-ol"></i>
+                    <div class="tksl" style="margin-left:91px">SẢN PHẨM</div>
+                    <div class="so">@Model.statistical.totalAmount</div>
+                </div>
+                <div class="col">
+                    <i class="tk fas fa-dollar-sign"></i>
+                    <div class="tksl" style="margin-left:69px">DOANH THU</div>
+                    <div class="so" id="tien">@Model.statistical.totalPrice</div>
+                    <script>
+                        var x = document.getElementById("tien").innerHTML;
+                        x = parseInt(x);
+                        x = x.toLocaleString('it-IT', { style: 'currency', currency: 'VND' });
+                        document.getElementById("tien").innerHTML = x;
+                    </script>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-48 tm-block-col">
+            <div class="tm-bg-primary-dark tm-block tm-block-taller tm-block-scroll">
+                <h2 class="tm-block-title">Đơn Đặt Hàng</h2>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">MÃ ĐƠN HÀNG</th>
+                            <th scope="col">TÊN KH</th>
+                            <th scope="col">NGÀY DẶT    </th>
+                            <th scope="col">NƠI GIAO</th>
+                            <th scope="col">SỐ ĐIỆN THOẠI</th>
+                            <th scope="col">TỔNG GIÁ </th>
+                            <th scope="col">TRẠNG THÁI</th>
+                            <th scope="col">CHI TIẾT</th>
+                            <th scope="col">SỬA</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.listAdminOrder)
+                        {
+                        <tr>
+                            <th scope="col">@item.orderId</th>
+                            <th scope="col">@item.fullName</th>
+                            <th scope="col">@item.dateOrder</th>
+                            <th scope="col">@item.address</th>
+                            <th scope="col">@item.phone</th>
+                            <th scope="col" id="tien-@item.orderId">@item.totalPrice</th>
+                            <script>
+                                            var x = document.getElementById("tien-@item.orderId").innerHTML;
+                                            x = parseInt(x);
+                                            x = x.toLocaleString('it-IT', { style: 'currency', currency: 'VND' });
+                                            document.getElementById("tien-@item.orderId").innerHTML = x;
+                            </script>
+                            @if (item.status == 0)
+                            {
+                                <td>
+                                    <div class="tm-status-circle pending">
+                                    </div>Đang giao
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                    <div class="tm-status-circle moving">
+                                    </div>Đã giao
+                                </td>
+                            }
+                            <th scope="col">
+                                <a href="/Admin_Home/Details/@item.orderId/@item.userId">
+                                    <i class="fas fa-calendar-week" style="color:white"></i>
+                                </a>
+                            </th>
+                            <th scope="col">
+                                <a href="/Admin_Home/Edit/@item.orderId">
+                                    <i class="far fa-edit" style="color:white"></i>
+                                </a>
+                            </th>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+
+
+
+
+    </div>
+</div>
+<style>
+    .tk {
+        color: white;
+        font-size: 70px;
+        margin-left: 107px;
+    }
+    .tksl {
+        margin-left: 81px;
+        margin-top: 12px;
+        COLOR: WHITE;
+        FONT-SIZE: 20PX;
+        FONT-WEIGHT: 700;
+    }
+    .so {
+        font-size: 35px;
+        color: white;
+        font-weight: 700;
+        text-align:center;
+    }
+</style>

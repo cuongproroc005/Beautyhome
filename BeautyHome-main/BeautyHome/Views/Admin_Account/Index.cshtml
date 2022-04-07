@@ -1,0 +1,127 @@
+﻿@model BeautyHome.Models.AdminAccount
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Admin_Layout.cshtml";
+}
+
+<div class="container mt-5">
+    <div class="row tm-content-row">
+        <div class="col-12 tm-block-col">
+            <div class="tm-bg-primary-dark tm-block tm-block-h-auto">
+                <h2 class="tm-block-title">Danh Sách Tài Khoản</h2>
+                <p class="text-white">Tài Khoản</p>
+                <select class="custom-select">
+                    <option value="0">Chọn Tài Khoản</option>
+                    <option value="1">Admin</option>
+                    <option value="2">Editor</option>
+                    <option value="3">Merchant</option>
+                    <option value="4">Customer</option>
+
+                </select>
+                <div class="col-sm-12 col-md-12 col-lg-8 col-xl-8 tm-block-col">
+                    <div class="tm-bg-primary-dark tm-block tm-block-products" style="width:1050px;">
+                        <div class="tm-product-table-container">
+                            <table class="table table-hover tm-table-small tm-product-table">
+                                <thead>
+                                    <tr>                                       
+                                        <th scope="col">ID</th>
+                                        <th scope="col">TÊN TÀI KHOẢN</th>
+                                        <th scope="col">HỌ VÀ TÊN</th>
+                                        <th scope="col">ĐỊA CHỈ</th>
+                                        <th scope="col">EMAIL</th>
+                                        <th scope="col">SĐT</th>
+                                        <th scope="col">&nbsp;</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.listAccount)
+                                    {
+                                    <tr>
+                                        <td>@item.user_id</td>
+                                        <td>@item.user_name</td>
+                                        <td>@item.full_name</td>
+                                        <td class="tm-product-name">@item.address</td>
+                                        <td>@item.email</td>
+                                        <td>@item.phone</td>
+                                        <td>
+                                            <a href="/Admin_Account/DeleteAccount?userId=@item.user_id" class="tm-product-delete-link">
+                                                <i class="far fa-trash-alt tm-product-delete-icon"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- row -->
+    <div class="row tm-content-row">
+        
+        <div class="tm-block-col tm-col-account-settings">
+            <div class="tm-bg-primary-dark tm-block tm-block-settings">
+                <h2 class="tm-block-title">Thêm Tài Khoản</h2>
+                <form action="/Admin_Account/AddAccount" class="tm-signup-form row" method="post">
+                    <div class="form-group col-lg-6">
+                        <label for="name">Tên Tài Khoản</label>
+                        <input id="name"
+                               name="user_name"
+                               type="text"
+                               class="form-control validate" />
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label for="full_name">Họ Và Tên</label>
+                        <input id="full_name"
+                               name="full_name"
+                               type="text"
+                               class="form-control validate" />
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label for="password">Mật Khẩu</label>
+                        <input id="password"
+                               name="password"
+                               type="password"
+                               class="form-control validate" />
+                    </div>
+                    <div class="form-group col-lg-6">
+                        <label for="email">Email</label>
+                        <input id="email"
+                               name="email"
+                               type="text"
+                               class="form-control validate" />
+                    </div>
+
+                    
+
+                    <div class="form-group col-lg-6">
+                        <label for="address">Địa Chỉ</label>
+                        <input id="address"
+                               name="address"
+                               type="text"
+                               class="form-control validate" />
+                    </div>
+
+                    <div class="form-group col-lg-6">
+                        <label for="phone">Điện Thoại</label>
+                        <input id="phone"
+                               name="phone"
+                               type="text"
+                               class="form-control validate" />
+                    </div>
+
+                    <div class="col-12">
+                        <button type="submit"
+                                class="btn btn-primary btn-block text-uppercase">
+                            Thêm Tài Khoản
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
